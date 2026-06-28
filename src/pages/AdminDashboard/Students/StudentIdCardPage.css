@@ -1,0 +1,35 @@
+.id-card{
+  width:320px;
+  margin:20px auto;
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 4px 16px rgba(0,0,0,.08);
+}
+
+.id-header{
+  background:#214265;
+  color:#fff;
+  text-align:center;
+  padding:14px;
+  font-weight:700;
+}
+
+.id-body{
+  padding:20px;
+  text-align:center;
+}
+
+.id-photo{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:#eaf2ff;
+  color:#214265;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
+  font-weight:700;
+  font-size:24px;
+}

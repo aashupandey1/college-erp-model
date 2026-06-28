@@ -1,0 +1,329 @@
+/* ══════════════════════════════════════
+   EditStudentPage.css
+   AddStudentPage.css ke upar override styles
+══════════════════════════════════════ */
+
+/* ── Changed field highlight ── */
+.esp-field-changed > .afs-input,
+.esp-field-changed > .afs-select,
+.esp-field-changed > .afs-textarea {
+  border-color: #d97706;
+  background: #fffbeb;
+}
+
+.esp-field-changed > .afs-input:focus,
+.esp-field-changed > .afs-select:focus,
+.esp-field-changed > .afs-textarea:focus {
+  border-color: #b45309;
+}
+
+.esp-changed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #d97706;
+  background: #fef9c3;
+  border: 1px solid #fde68a;
+  border-radius: 20px;
+  padding: 1px 6px;
+}
+
+/* ── Toggle card changed ── */
+.esp-card-changed {
+  border-color: #fbbf24 !important;
+  background: #fffbeb !important;
+}
+
+/* ── Read-only field ── */
+.esp-readonly {
+  background: #f1f3f8 !important;
+  color: #8891aa !important;
+  cursor: not-allowed;
+  border-color: #e8ecf4 !important;
+}
+
+.esp-readonly-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f7f8fc;
+  border: 1px solid #e8ecf4;
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-size: 12px;
+  color: #6b7a99;
+  margin-bottom: 18px;
+}
+
+/* ── Status selector ── */
+.esp-status-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 4px 0;
+}
+
+.esp-status-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #dde2ee;
+  background: #f7f8fc;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7a99;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.esp-status-btn:hover { border-color: #aab0bc; }
+
+/* ── Sidebar identity card ── */
+.esp-identity-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #eff4ff;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.esp-identity-av {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #1a3a6e;
+  color: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.esp-identity-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a3a6e;
+}
+
+.esp-identity-id {
+  font-size: 10px;
+  color: #8891aa;
+  margin: 2px 0 5px;
+}
+
+.esp-identity-meta {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+/* ── Status bar ── */
+.esp-status-bar {
+  text-align: center;
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.esp-status-active   { background: #EAF3DE; color: #3B6D11; }
+.esp-status-detained { background: #FAEEDA; color: #854F0B; }
+.esp-status-alumni   { background: #E6F1FB; color: #185FA5; }
+.esp-status-dropout  { background: #FCEBEB; color: #A32D2D; }
+
+/* ── Changes box ── */
+.esp-changes-box {
+  background: #f7f8fc;
+  border: 1px solid #e8ecf4;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.esp-changes-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #1a3a6e;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.esp-no-changes {
+  font-size: 11px;
+  color: #aab0bc;
+  font-style: italic;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.esp-change-row {
+  border-bottom: 1px solid #edf0f7;
+  padding: 7px 0;
+}
+
+.esp-change-row:last-child { border-bottom: none; }
+
+.esp-change-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #6b7a99;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.esp-change-vals {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  flex-wrap: wrap;
+}
+
+.esp-old {
+  color: #dc2626;
+  text-decoration: line-through;
+  background: #fff5f5;
+  padding: 1px 5px;
+  border-radius: 4px;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.esp-arrow {
+  color: #aab0bc;
+  font-size: 10px;
+}
+
+.esp-new {
+  color: #059669;
+  font-weight: 700;
+  background: #f0fdf4;
+  padding: 1px 5px;
+  border-radius: 4px;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Quick info ── */
+.esp-quick-info {
+  background: #f7f8fc;
+  border: 1px solid #e8ecf4;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.esp-qi-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  padding: 4px 0;
+  border-bottom: 1px solid #f0f2f8;
+  color: #8891aa;
+}
+
+.esp-qi-row:last-child { border-bottom: none; }
+
+.esp-qi-val {
+  font-weight: 700;
+  color: #1a3a6e;
+}
+
+/* ── Sidebar note ── */
+.esp-sidebar-note {
+  font-size: 10px;
+  color: #aab0bc;
+  line-height: 1.5;
+  text-align: center;
+  padding: 4px;
+}
+
+/* ── Unsaved badge in header ── */
+.esp-unsaved-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #d97706;
+  background: #fef9c3;
+  border: 1px solid #fde68a;
+  border-radius: 20px;
+  padding: 5px 12px;
+}
+
+/* ── Disabled save button ── */
+.esp-btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+
+/* ── Discard confirm modal ── */
+.esp-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.esp-modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.esp-modal-icon  { font-size: 40px; margin-bottom: 12px; }
+.esp-modal-title { font-size: 18px; font-weight: 800; color: #1a3a6e; margin-bottom: 8px; }
+.esp-modal-sub   { font-size: 13px; color: #6b7a99; margin-bottom: 24px; line-height: 1.5; }
+
+.esp-modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.esp-btn-discard {
+  padding: 9px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #dc2626;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.esp-btn-discard:hover { background: #b91c1c; }
+
+/* Pills */
+.pill        { padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 700; }
+.pill-blue   { background: #eff4ff; color: #2563eb; }
+.pill-teal   { background: #e3f3f1; color: #0F766E; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .esp-status-options { gap: 6px; }
+  .esp-status-btn     { font-size: 11px; padding: 5px 10px; }
+}

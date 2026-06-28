@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenTech College ERP — Feature Showcase</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f4f7fc;color:#1a3a6e}
+
+/* NAV */
+.nav{background:#1a3a6e;padding:0 32px;display:flex;align-items:center;height:56px;position:sticky;top:0;z-index:100;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:32px;height:32px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px}
+.nav-logo-text{font-size:15px;font-weight:600;color:#fff}
+.nav-links{display:flex;gap:4px;flex:1}
+.nav-link{font-size:12px;color:rgba(255,255,255,.7);padding:6px 12px;border-radius:6px;cursor:pointer;text-decoration:none;transition:background .15s}
+.nav-link:hover,.nav-link.active{background:rgba(255,255,255,.12);color:#fff}
+.nav-cta{background:#2563eb;color:#fff;padding:7px 16px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:5px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1a3a6e 0%,#0f2a56 60%,#26215C 100%);padding:64px 32px 72px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);font-size:12px;padding:5px 14px;border-radius:20px;margin-bottom:20px}
+.hero-tag i{font-size:13px}
+.hero h1{font-size:42px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#60a5fa}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.7);max-width:580px;margin:0 auto 32px;line-height:1.6}
+.hero-btns{display:flex;gap:12px;justify-content:center;margin-bottom:48px}
+.hero-btn-p{background:#2563eb;color:#fff;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none}
+.hero-btn-o{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none}
+.hero-stats{display:flex;gap:0;justify-content:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;max-width:640px;margin:0 auto}
+.hero-stat{flex:1;padding:20px 16px;text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+.hero-stat:last-child{border-right:none}
+.hero-stat-val{font-size:24px;font-weight:700;color:#fff;margin-bottom:3px}
+.hero-stat-lbl{font-size:11px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em}
+
+/* SECTION NAV PILLS */
+.section-nav{background:#fff;border-bottom:1px solid #eef0f4;padding:0 32px;display:flex;gap:4px;overflow-x:auto;position:sticky;top:56px;z-index:90}
+.section-pill{display:flex;align-items:center;gap:6px;padding:14px 16px;font-size:12px;font-weight:500;color:#6b7a99;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;text-decoration:none;transition:color .15s}
+.section-pill:hover{color:#1a3a6e}
+.section-pill.s0:hover,.section-pill.s0.active{color:#534AB7;border-bottom-color:#534AB7}
+.section-pill.s1:hover,.section-pill.s1.active{color:#0F6E56;border-bottom-color:#0F6E56}
+.section-pill.s2:hover,.section-pill.s2.active{color:#993C1D;border-bottom-color:#993C1D}
+.section-pill.s3:hover,.section-pill.s3.active{color:#854F0B;border-bottom-color:#854F0B}
+.section-pill.s4:hover,.section-pill.s4.active{color:#185FA5;border-bottom-color:#185FA5}
+.section-pill.s5:hover,.section-pill.s5.active{color:#5F5E5A;border-bottom-color:#5F5E5A}
+.section-pill .sp-dot{width:8px;height:8px;border-radius:50%}
+
+/* MAIN CONTENT */
+.main{max-width:1100px;margin:0 auto;padding:40px 32px 80px}
+
+/* MODULE SECTION BLOCK */
+.mod-section{margin-bottom:56px;scroll-margin-top:108px}
+.mod-section-hdr{display:flex;align-items:center;gap:16px;margin-bottom:24px;padding:20px 24px;border-radius:14px;border:1px solid}
+.mod-section-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.mod-section-title{font-size:20px;font-weight:700}
+.mod-section-sub{font-size:13px;margin-top:2px}
+.mod-section-count{margin-left:auto;text-align:right}
+.mod-section-count-num{font-size:22px;font-weight:700}
+.mod-section-count-lbl{font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+
+/* MODULE GRID */
+.mod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(max-width:640px){.mod-grid{grid-template-columns:1fr}}
+
+/* MODULE CARD */
+.mod-card{background:#fff;border-radius:12px;border:1px solid #eef0f4;overflow:hidden;transition:box-shadow .15s}
+.mod-card:hover{box-shadow:0 4px 16px rgba(26,58,110,.08)}
+.mod-card-hdr{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none}
+.mod-card-hdr:hover{background:#f9fafd}
+.mod-card-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.mod-card-name{font-size:13px;font-weight:600;color:#1a3a6e;flex:1}
+.mod-card-badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500;flex-shrink:0}
+.mod-card-chev{font-size:15px;color:#aab0bc;transition:transform .2s;flex-shrink:0}
+.mod-card-chev.open{transform:rotate(180deg)}
+.mod-card-body{display:none;padding:4px 16px 14px;border-top:1px solid #f4f7fc}
+.mod-card-body.open{display:block}
+.mod-feat{display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:12px;color:#4a5568;line-height:1.5}
+.mod-feat-bullet{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px}
+
+/* COLOR THEMES */
+/* Academic - Purple */
+.th-0 .mod-section-hdr{background:#EEEDFE;border-color:#AFA9EC}
+.th-0 .mod-section-icon{background:#534AB7;color:#fff}
+.th-0 .mod-section-title{color:#26215C}
+.th-0 .mod-section-sub{color:#534AB7}
+.th-0 .mod-section-count-num{color:#534AB7}
+.th-0 .mod-section-count-lbl{color:#7F77DD}
+.th-0 .mod-card-icon{background:#EEEDFE;color:#534AB7}
+.th-0 .mod-card-badge{background:#EEEDFE;color:#534AB7}
+.th-0 .mod-feat-bullet{background:#7F77DD}
+
+/* Learning - Teal */
+.th-1 .mod-section-hdr{background:#E1F5EE;border-color:#5DCAA5}
+.th-1 .mod-section-icon{background:#0F6E56;color:#fff}
+.th-1 .mod-section-title{color:#04342C}
+.th-1 .mod-section-sub{color:#0F6E56}
+.th-1 .mod-section-count-num{color:#0F6E56}
+.th-1 .mod-section-count-lbl{color:#1D9E75}
+.th-1 .mod-card-icon{background:#E1F5EE;color:#0F6E56}
+.th-1 .mod-card-badge{background:#E1F5EE;color:#0F6E56}
+.th-1 .mod-feat-bullet{background:#1D9E75}
+
+/* Administration - Coral */
+.th-2 .mod-section-hdr{background:#FAECE7;border-color:#F0997B}
+.th-2 .mod-section-icon{background:#993C1D;color:#fff}
+.th-2 .mod-section-title{color:#4A1B0C}
+.th-2 .mod-section-sub{color:#993C1D}
+.th-2 .mod-section-count-num{color:#993C1D}
+.th-2 .mod-section-count-lbl{color:#D85A30}
+.th-2 .mod-card-icon{background:#FAECE7;color:#993C1D}
+.th-2 .mod-card-badge{background:#FAECE7;color:#993C1D}
+.th-2 .mod-feat-bullet{background:#D85A30}
+
+/* Finance - Amber */
+.th-3 .mod-section-hdr{background:#FAEEDA;border-color:#EF9F27}
+.th-3 .mod-section-icon{background:#854F0B;color:#fff}
+.th-3 .mod-section-title{color:#412402}
+.th-3 .mod-section-sub{color:#854F0B}
+.th-3 .mod-section-count-num{color:#854F0B}
+.th-3 .mod-section-count-lbl{color:#BA7517}
+.th-3 .mod-card-icon{background:#FAEEDA;color:#854F0B}
+.th-3 .mod-card-badge{background:#FAEEDA;color:#854F0B}
+.th-3 .mod-feat-bullet{background:#BA7517}
+
+/* HR & Compliance - Blue */
+.th-4 .mod-section-hdr{background:#E6F1FB;border-color:#85B7EB}
+.th-4 .mod-section-icon{background:#185FA5;color:#fff}
+.th-4 .mod-section-title{color:#042C53}
+.th-4 .mod-section-sub{color:#185FA5}
+.th-4 .mod-section-count-num{color:#185FA5}
+.th-4 .mod-section-count-lbl{color:#378ADD}
+.th-4 .mod-card-icon{background:#E6F1FB;color:#185FA5}
+.th-4 .mod-card-badge{background:#E6F1FB;color:#185FA5}
+.th-4 .mod-feat-bullet{background:#378ADD}
+
+/* Infrastructure - Gray */
+.th-5 .mod-section-hdr{background:#F1EFE8;border-color:#B4B2A9}
+.th-5 .mod-section-icon{background:#444441;color:#fff}
+.th-5 .mod-section-title{color:#2C2C2A}
+.th-5 .mod-section-sub{color:#5F5E5A}
+.th-5 .mod-section-count-num{color:#5F5E5A}
+.th-5 .mod-section-count-lbl{color:#888780}
+.th-5 .mod-card-icon{background:#F1EFE8;color:#5F5E5A}
+.th-5 .mod-card-badge{background:#F1EFE8;color:#5F5E5A}
+.th-5 .mod-feat-bullet{background:#888780}
+
+/* FOOTER */
+.footer{background:#1a3a6e;padding:40px 32px;text-align:center}
+.footer-logo{font-size:18px;font-weight:700;color:#fff;margin-bottom:8px}
+.footer-sub{font-size:13px;color:rgba(255,255,255,.5)}
+.footer-links{display:flex;gap:24px;justify-content:center;margin:20px 0}
+.footer-link{font-size:12px;color:rgba(255,255,255,.6);text-decoration:none}
+.footer-link:hover{color:#fff}
+
+/* FEATURE COUNT PILLS ROW */
+.feat-count-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.feat-count-pill{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;border:1px solid;font-size:12px;font-weight:500;cursor:pointer}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon"><i class="ti ti-school" aria-hidden="true"></i></div>
+    <span class="nav-logo-text">GreenTech ERP</span>
+  </a>
+  <div class="nav-links">
+    <a href="#features" class="nav-link active">Features</a>
+    <a href="#modules" class="nav-link">Modules</a>
+    <a href="#roles" class="nav-link">User Roles</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta"><i class="ti ti-rocket" aria-hidden="true"></i> Request Demo</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-tag"><i class="ti ti-building-community" aria-hidden="true"></i> Engineering College ERP System</div>
+  <h1>One Platform.<br><span>Every Campus Function.</span></h1>
+  <p class="hero-sub">A complete ERP built for engineering colleges — managing students, faculty, finance, hostel, placement & more from a single unified system.</p>
+  <div class="hero-btns">
+    <a href="#features" class="hero-btn-p"><i class="ti ti-layout-grid" aria-hidden="true"></i> Explore All Features</a>
+    <a href="#contact" class="hero-btn-o"><i class="ti ti-player-play" aria-hidden="true"></i> Watch Demo</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-val">6</div><div class="hero-stat-lbl">Core Sections</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">24</div><div class="hero-stat-lbl">Modules</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">150+</div><div class="hero-stat-lbl">Features</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">5</div><div class="hero-stat-lbl">Role Portals</div></div>
+  </div>
+</section>
+
+<!-- SECTION NAV -->
+<div class="section-nav" id="features">
+  <a href="#sec-0" class="section-pill s0"><div class="sp-dot" style="background:#534AB7"></div> Academic</a>
+  <a href="#sec-1" class="section-pill s1"><div class="sp-dot" style="background:#0F6E56"></div> Learning & Faculty</a>
+  <a href="#sec-2" class="section-pill s2"><div class="sp-dot" style="background:#993C1D"></div> Administration</a>
+  <a href="#sec-3" class="section-pill s3"><div class="sp-dot" style="background:#854F0B"></div> Finance</a>
+  <a href="#sec-4" class="section-pill s4"><div class="sp-dot" style="background:#185FA5"></div> HR & Compliance</a>
+  <a href="#sec-5" class="section-pill s5"><div class="sp-dot" style="background:#5F5E5A"></div> Infrastructure</a>
+</div>
+
+<div class="main" id="modules">
+  <div id="erp-root"></div>
+</div>
+
+<!-- ROLES SECTION -->
+<section style="background:#fff;padding:56px 32px;border-top:1px solid #eef0f4" id="roles">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:40px">
+      <p style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8a94a6;margin-bottom:8px">Role-Based Access</p>
+      <h2 style="font-size:28px;font-weight:700;color:#1a3a6e;margin-bottom:10px">Five Portals, One System</h2>
+      <p style="font-size:14px;color:#6b7a99;max-width:500px;margin:0 auto">Every user gets a tailored dashboard — only what they need, nothing they don't.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px">
+      <div style="background:#f4f7fc;border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #eef0f4">
+        <div style="width:44px;height:44px;border-radius:12px;background:#1a3a6e;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:20px;color:#fff"><i class="ti ti-shield-lock" aria-hidden="true"></i></div>
+        <div style="font-size:13px;font-weight:600;color:#1a3a6e;margin-bottom:4px">Admin</div>
+        <div style="font-size:11px;color:#8a94a6">Full system control & reports</div>
+      </div>
+      <div style="background:#EEEDFE;border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #AFA9EC">
+        <div style="width:44px;height:44px;border-radius:12px;background:#534AB7;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:20px;color:#fff"><i class="ti ti-briefcase" aria-hidden="true"></i></div>
+        <div style="font-size:13px;font-weight:600;color:#26215C;margin-bottom:4px">HOD</div>
+        <div style="font-size:11px;color:#7F77DD">Department-level oversight</div>
+      </div>
+      <div style="background:#E1F5EE;border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #5DCAA5">
+        <div style="width:44px;height:44px;border-radius:12px;background:#0F6E56;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:20px;color:#fff"><i class="ti ti-school" aria-hidden="true"></i></div>
+        <div style="font-size:13px;font-weight:600;color:#04342C;margin-bottom:4px">Faculty</div>
+        <div style="font-size:11px;color:#1D9E75">Attendance, marks & LMS</div>
+      </div>
+      <div style="background:#FAECE7;border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #F0997B">
+        <div style="width:44px;height:44px;border-radius:12px;background:#993C1D;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:20px;color:#fff"><i class="ti ti-user-circle" aria-hidden="true"></i></div>
+        <div style="font-size:13px;font-weight:600;color:#4A1B0C;margin-bottom:4px">Student</div>
+        <div style="font-size:11px;color:#D85A30">Results, fees & hostel</div>
+      </div>
+      <div style="background:#FAEEDA;border-radius:12px;padding:20px 16px;text-align:center;border:1px solid #EF9F27">
+        <div style="width:44px;height:44px;border-radius:12px;background:#854F0B;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:20px;color:#fff"><i class="ti ti-calculator" aria-hidden="true"></i></div>
+        <div style="font-size:13px;font-weight:600;color:#412402;margin-bottom:4px">Accountant</div>
+        <div style="font-size:11px;color:#BA7517">Fee collection & payroll</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer class="footer" id="contact">
+  <div class="footer-logo">GreenTech College ERP</div>
+  <div class="footer-sub">Comprehensive ERP solution for engineering colleges — Built with React + Vite</div>
+  <div class="footer-links">
+    <a href="#hero" class="footer-link">Home</a>
+    <a href="#features" class="footer-link">Features</a>
+    <a href="#roles" class="footer-link">Roles</a>
+    <a href="#contact" class="footer-link">Contact</a>
+  </div>
+  <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:8px">© 2026 GreenTech ERP · All rights reserved</div>
+</footer>
+
+<script>
+const modules = [
+  {
+    id:"sec-0", section:"Academic", themeClass:"th-0",
+    icon:"ti-certificate", iconBg:"#534AB7",
+    color:"#534AB7", bg:"#EEEDFE", border:"#AFA9EC",
+    titleColor:"#26215C", subColor:"#7F77DD",
+    desc:"Manage the complete academic lifecycle — from admission to results.",
+    totalFeatures: 31,
+    cardIcon:"ti-book",
+    modules:[
+      {name:"Student Management",count:8,icon:"ti-users",features:["Online admission & enrollment","Student profile & photo ID","Branch, batch & section mapping","Document upload & verification","Certificate issuance (bonafide, etc.)","Student status tracking (active/pass/drop)","Parent & guardian records","Student ID card generation"]},
+      {name:"Attendance System",count:7,icon:"ti-calendar-check",features:["Daily lecture-wise attendance","Biometric / RFID integration","Manual entry fallback","Attendance shortage alerts (SMS/email)","Monthly & cumulative reports","Eligibility calculation for exams","Leave management for students"]},
+      {name:"Exam & Results",count:9,icon:"ti-clipboard-list",features:["Internal & university exam scheduling","Hall ticket / admit card generation","Seating arrangement automation","Marks entry (internal + external)","Grade & GPA calculation","Result publication portal","Revaluation & backlog tracking","Rank list & topper reports","Progress card / marksheet printing"]},
+      {name:"Academic Curriculum",count:7,icon:"ti-books",features:["Course & subject master setup","Semester-wise syllabus management","Faculty-subject mapping","Timetable generator","Holiday & academic calendar","Credit hour management","CO-PO mapping (outcome based education)"]}
+    ]
+  },
+  {
+    id:"sec-1", section:"Learning & Faculty", themeClass:"th-1",
+    icon:"ti-school", iconBg:"#0F6E56",
+    color:"#0F6E56", bg:"#E1F5EE", border:"#5DCAA5",
+    titleColor:"#04342C", subColor:"#1D9E75",
+    desc:"Empower faculty with digital tools — LMS, lab management & more.",
+    totalFeatures: 27,
+    cardIcon:"ti-device-desktop",
+    modules:[
+      {name:"Faculty Management",count:8,icon:"ti-id-badge",features:["Faculty profile & department mapping","Qualification & experience records","Workload & teaching hours tracker","Leave application & approval","Appraisal / performance review","Research & publication tracking","Faculty feedback by students","Training & FDP records"]},
+      {name:"LMS / E-Learning",count:7,icon:"ti-device-laptop",features:["Course content upload (PDF, video, PPT)","Assignment creation & submission","Quiz & online test builder","Discussion forum per subject","Student progress tracking","Integration with Zoom / Google Meet","Mobile app access"]},
+      {name:"Library Management",count:6,icon:"ti-building-library",features:["Book catalog & accession register","Issue, return & renewal","Fine calculation (auto)","Student & faculty borrowing history","Inter-library loan tracking","E-library / digital resource links"]},
+      {name:"Lab & Workshop",count:6,icon:"ti-flask",features:["Lab equipment & asset inventory","Slot booking by students/faculty","Consumables stock management","Lab attendance register","Equipment maintenance log","AMC / warranty tracking"]}
+    ]
+  },
+  {
+    id:"sec-2", section:"Administration", themeClass:"th-2",
+    icon:"ti-building", iconBg:"#993C1D",
+    color:"#993C1D", bg:"#FAECE7", border:"#F0997B",
+    titleColor:"#4A1B0C", subColor:"#D85A30",
+    desc:"Streamline hostel, transport, placement & grievance management.",
+    totalFeatures: 25,
+    cardIcon:"ti-settings",
+    modules:[
+      {name:"Hostel Management",count:7,icon:"ti-home",features:["Room allotment & bed management","Hostel fee collection","In/out register","Mess menu & billing","Warden dashboard","Complaint / maintenance requests","Visitor log"]},
+      {name:"Transport",count:5,icon:"ti-bus",features:["Route & stop master","Bus pass issuance","GPS vehicle tracking integration","Driver & conductor records","Transport fee collection"]},
+      {name:"Placement Cell",count:8,icon:"ti-briefcase",features:["Company registration & drive scheduling","Student eligibility & shortlisting","Offer letter upload","Placement statistics (branch/batch wise)","Alumni referral network","Pre-placement training tracking","Internship tracking","TNP officer dashboard"]},
+      {name:"Grievance & Discipline",count:5,icon:"ti-message-report",features:["Grievance submission portal","Complaint assignment & resolution tracking","Disciplinary action log","Anti-ragging committee module","Anonymous reporting option"]}
+    ]
+  },
+  {
+    id:"sec-3", section:"Finance", themeClass:"th-3",
+    icon:"ti-coin", iconBg:"#854F0B",
+    color:"#854F0B", bg:"#FAEEDA", border:"#EF9F27",
+    titleColor:"#412402", subColor:"#BA7517",
+    desc:"Complete financial management — fees, payroll, accounts & procurement.",
+    totalFeatures: 28,
+    cardIcon:"ti-chart-pie",
+    modules:[
+      {name:"Fee Management",count:8,icon:"ti-receipt",features:["Fee structure per course/year","Online payment gateway integration","Installment & due date management","Receipt & challan generation","Defaulter list & reminders","Fee concession management","Refund processing","Day-end cash reconciliation"]},
+      {name:"Scholarship & Finance",count:6,icon:"ti-award",features:["Govt. scholarship (NSP, state) integration","Scholarship application & approval workflow","Merit-based scholarship management","Disbursement tracking","Minority / SC-ST / OBC category handling","Scholarship audit reports"]},
+      {name:"Accounts & Payroll",count:8,icon:"ti-calculator",features:["Double-entry accounting (ledger)","Budget allocation & tracking","Faculty & staff salary processing","TDS & PF/ESI deductions","Form 16 generation","Annual audit reports","Vendor payment management","Bank reconciliation"]},
+      {name:"Purchase & Inventory",count:6,icon:"ti-shopping-cart",features:["Purchase requisition & approval","Vendor quotation & comparison","Purchase order generation","GRN (goods receipt note)","Stock & inventory tracking","Asset register (furniture, equipment)"]}
+    ]
+  },
+  {
+    id:"sec-4", section:"HR, Compliance & Research", themeClass:"th-4",
+    icon:"ti-users-group", iconBg:"#185FA5",
+    color:"#185FA5", bg:"#E6F1FB", border:"#85B7EB",
+    titleColor:"#042C53", subColor:"#378ADD",
+    desc:"HR lifecycle, NAAC/NBA compliance, alumni network & R&D tracking.",
+    totalFeatures: 24,
+    cardIcon:"ti-file-check",
+    modules:[
+      {name:"HR & Staff Mgmt",count:7,icon:"ti-user-cog",features:["Recruitment & onboarding workflow","Employee master records","Biometric leave & attendance","Promotion & increment tracking","Employee self-service portal","Staff appraisal & KRA setting","Separation / exit process"]},
+      {name:"Compliance & NAAC/NBA",count:6,icon:"ti-shield-check",features:["NAAC criterion-wise data collection","NBA accreditation reports","UGC / AICTE reporting","Inspection preparation portal","Regulatory compliance calendar","MIS reports for management"]},
+      {name:"Alumni Management",count:5,icon:"ti-heart-handshake",features:["Alumni registration & profile","Batch-wise directory","Donation & endowment management","Alumni events & reunions","Industry mentorship linkage"]},
+      {name:"R&D & Projects",count:6,icon:"ti-microscope",features:["Research project registration","Grant & funding tracking","Patent filing status","Publication & conference log","Student final year project management","Industry-sponsored project portal"]}
+    ]
+  },
+  {
+    id:"sec-5", section:"Infrastructure & Portals", themeClass:"th-5",
+    icon:"ti-server", iconBg:"#444441",
+    color:"#5F5E5A", bg:"#F1EFE8", border:"#B4B2A9",
+    titleColor:"#2C2C2A", subColor:"#888780",
+    desc:"Communication tools, self-service portals, analytics & IT security.",
+    totalFeatures: 25,
+    cardIcon:"ti-layout-dashboard",
+    modules:[
+      {name:"Communication Hub",count:6,icon:"ti-bell-ringing",features:["Bulk SMS & email notifications","In-app push notifications","Notice board (department/college level)","Emergency broadcast","Circular & letter generation","WhatsApp integration (optional)"]},
+      {name:"Student & Parent Portal",count:6,icon:"ti-device-mobile",features:["Student self-service dashboard","Fee payment & receipt download","Attendance & result view","Parent login with child's academic data","Online complaint/request submission","Mobile-responsive / app support"]},
+      {name:"Reports & Analytics",count:6,icon:"ti-chart-bar",features:["Custom MIS report builder","Department-wise performance analytics","Graphical dashboards (admin/HOD)","Export to Excel / PDF","Scheduled automated reports","Business intelligence (BI) integration"]},
+      {name:"IT Infrastructure & Security",count:7,icon:"ti-lock",features:["Role-based access control (RBAC)","Single sign-on (SSO)","Multi-factor authentication","Data backup & disaster recovery","Activity audit logs","API integration (ERP ↔ external systems)","Cloud / on-premise deployment options"]}
+    ]
+  }
+];
+
+function toggle(id){
+  const body=document.getElementById('bd-'+id);
+  const chev=document.getElementById('ch-'+id);
+  if(!body||!chev)return;
+  const isOpen=body.classList.contains('open');
+  body.classList.toggle('open',!isOpen);
+  chev.classList.toggle('open',!isOpen);
+}
+
+const root=document.getElementById('erp-root');
+let html='';
+
+modules.forEach((sec,si)=>{
+  html+=`<div class="mod-section th-${si}" id="${sec.id}">
+    <div class="mod-section-hdr">
+      <div class="mod-section-icon"><i class="ti ${sec.icon}" aria-hidden="true"></i></div>
+      <div style="flex:1">
+        <div class="mod-section-title">${sec.section}</div>
+        <div class="mod-section-sub">${sec.desc}</div>
+      </div>
+      <div class="mod-section-count">
+        <div class="mod-section-count-num">${sec.totalFeatures}+</div>
+        <div class="mod-section-count-lbl">Features</div>
+      </div>
+    </div>
+    <div class="mod-grid">`;
+
+  sec.modules.forEach((mod,mi)=>{
+    const id=`${si}-${mi}`;
+    html+=`<div class="mod-card">
+      <div class="mod-card-hdr" onclick="toggle('${id}')">
+        <div class="mod-card-icon"><i class="ti ${mod.icon}" aria-hidden="true"></i></div>
+        <span class="mod-card-name">${mod.name}</span>
+        <span class="mod-card-badge">${mod.count} features</span>
+        <i class="ti ti-chevron-down mod-card-chev" id="ch-${id}" aria-hidden="true"></i>
+      </div>
+      <div class="mod-card-body" id="bd-${id}">
+        ${mod.features.map(f=>`<div class="mod-feat"><div class="mod-feat-bullet"></div><span>${f}</span></div>`).join('')}
+      </div>
+    </div>`;
+  });
+
+  html+=`</div></div>`;
+});
+
+root.innerHTML=html;
+
+// Smooth active pill highlight on scroll
+const pills=document.querySelectorAll('.section-pill');
+const sections=document.querySelectorAll('.mod-section');
+function onScroll(){
+  let current='';
+  sections.forEach(s=>{
+    const top=s.getBoundingClientRect().top;
+    if(top<140)current=s.id;
+  });
+  pills.forEach(p=>{
+    const href=p.getAttribute('href').replace('#','');
+    p.classList.toggle('active',href===current);
+  });
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+/* ModulesSection.css */
+.modules {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+.modules__header {
+  margin-bottom: 52px;
+}
+
+.modules__section {
+  margin-bottom: 36px;
+}
+
+.modules__section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.modules__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+/* Module Card */
+.mod-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.mod-card--open,
+.mod-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.mod-card__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.mod-card__header:hover {
+  background: var(--gray-50);
+}
+
+.mod-card__name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.mod-card__badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.mod-card__chevron {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  display: flex;
+  transition: transform 0.2s;
+}
+
+.mod-card__chevron.open {
+  transform: rotate(180deg);
+}
+
+.mod-card__body {
+  padding: 0 14px 12px;
+  border-top: 1px solid var(--border);
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mod-card__feat {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding: 4px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  line-height: 1.5;
+}
+
+.mod-card__feat-arrow {
+  flex-shrink: 0;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .modules { padding: 60px 0; }
+  .modules__grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 400px) {
+  .modules__grid { grid-template-columns: 1fr; }
+}

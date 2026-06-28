@@ -1,0 +1,45 @@
+/* src/components/CollegeLogo.css */
+
+.college-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.college-logo__icon {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.college-logo img {
+    /* background-color: #fff; */
+    width: 32px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.college-logo__text {
+    display: flex;
+    flex-direction: column;
+}
+
+.college-logo__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.college-logo__subtitle {
+    font-size: 11px;
+    color: #d2cfcf;
+    line-height: 1.2;
+}
