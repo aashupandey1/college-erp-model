@@ -43,6 +43,14 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "College ERP Backend is Running 🚀",
+    version: "1.0.0"
+  });
+});
+
 app.get("/health", (req, res) => {
   res.status(200).json({ success: true, message: "College ERP API is running" });
 });
