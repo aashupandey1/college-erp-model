@@ -27,28 +27,37 @@ import StudentProfileView from "../Students/StudentProfileView";
 import AddStudentPage from "../Students/AddStudentPage";
 import EditStudentPage from "../Students/EditStudentPage";
 import StudentIdCardPage from "../Students/StudentIdCardPage";
-import AdmissionsPage from "../Students/AdmissionsPage"
+import AdmissionsPage from "../Students/AdmissionsPage";
 import AddFacultyPage from "../Faculty/AddFacultyPage";
 import FacultyProfileView from "../Faculty/FacultyProfileView";
 import EditFacultyPage from "../Faculty/EditFacultyPage";
+
 /* ════════════════════════════════════════
    MAIN EXPORT — AdminDashboard
+   FIX: Shell now receives handleNav (not setActive)
+        so profile/edit pages get proper data passed.
+   FIX: facultyList state added so editFaculty update works.
 ════════════════════════════════════════ */
 export default function AdminDashboard() {
   const [active, setActive] = useState("dashboard");
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [selectedFaculty, setSelectedFaculty] = useState(null);
+  const [facultyList, setFacultyList] = useState([]);
 
-  // ✅ Nav handler upgrade — page + optional data
+  /* ── Nav handler: page + optional data ── */
   const handleNav = (page, data = null) => {
     setActive(page);
 
-    if (page === "studentProfile" || page === "editStudent" || page === "studentIdCard") {
+    if (
+      page === "studentProfile" ||
+      page === "editStudent" ||
+      page === "studentIdCard"
+    ) {
       if (data) setSelectedStudent(data);
     }
 
     if (page === "facultyProfile" || page === "editFaculty") {
-      setSelectedFaculty(data);
+      if (data !== null) setSelectedFaculty(data);
     }
   };
 
@@ -56,10 +65,13 @@ export default function AdminDashboard() {
     switch (active) {
       case "dashboard":
         return <DashboardPage />;
+
       case "students":
         return <StudentsPage onNav={handleNav} />;
+
       case "faculty":
         return <FacultyPage onNav={handleNav} />;
+
       case "addFaculty":
         return (
           <AddFacultyPage
@@ -70,7 +82,6 @@ export default function AdminDashboard() {
                   method: "POST",
                   body: JSON.stringify(newFaculty),
                 });
-
                 alert("Faculty added successfully");
                 setActive("faculty");
               } catch (err) {
@@ -79,6 +90,7 @@ export default function AdminDashboard() {
             }}
           />
         );
+
       case "facultyProfile":
         return (
           <FacultyProfileView
@@ -87,49 +99,53 @@ export default function AdminDashboard() {
             onNav={handleNav}
           />
         );
+
       case "editFaculty":
         return (
           <EditFacultyPage
             faculty={selectedFaculty}
             onBack={() => setActive("facultyProfile")}
             onUpdate={(updatedFaculty) => {
-
               setFacultyList((prev) =>
-                prev.map((item) => {
-                  if (item.id === updatedFaculty.id) {
-                    return {
-                      ...item,
-                      ...updatedFaculty,
-                    };
-                  }
-                  return item;
-                })
+                prev.map((item) =>
+                  item.id === updatedFaculty.id
+                    ? { ...item, ...updatedFaculty }
+                    : item
+                )
               );
-
               setSelectedFaculty(updatedFaculty);
-
               setActive("facultyProfile");
             }}
           />
         );
+
       case "attendance":
         return <AttendancePage />;
+
       case "exams":
         return <ExamsPage />;
+
       case "fees":
         return <FeesPage />;
+
       case "hostel":
         return <HostelPage />;
+
       case "transport":
         return <TransportPage />;
+
       case "placement":
         return <PlacementPage />;
+
       case "library":
         return <LibraryPage />;
+
       case "grievance":
         return <GrievancePage />;
+
       case "scholarship":
         return <ScholarshipPage />;
+
       case "studentProfile":
         return (
           <StudentProfileView
@@ -140,11 +156,14 @@ export default function AdminDashboard() {
         );
 
       case "addStudent":
-        return <AddStudentPage
-          onSuccess={() => {
-            setActive("students");
-          }}
-        />;
+        return (
+          <AddStudentPage
+            onSuccess={() => {
+              setActive("students");
+            }}
+          />
+        );
+
       case "editStudent":
         return (
           <EditStudentPage
@@ -165,12 +184,9 @@ export default function AdminDashboard() {
             onNav={handleNav}
           />
         );
+
       case "admissions":
-        return (
-          <AdmissionsPage
-            onClose={() => setActive("students")}
-          />
-        );
+        return <AdmissionsPage onClose={() => setActive("students")} />;
 
       case "communication":
         return <CommunicationPage />;
@@ -195,13 +211,15 @@ export default function AdminDashboard() {
 
       case "settings":
         return <SettingsPage />;
+
       default:
         return <DashboardPage />;
     }
   };
 
+  /* FIX: pass handleNav (not setActive) so data flows correctly */
   return (
-    <Shell active={active} onNav={setActive}>
+    <Shell active={active} onNav={handleNav}>
       {renderPage()}
     </Shell>
   );
