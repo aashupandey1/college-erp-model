@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './AccountantDashboard.css'
+import './Accountantdashboard.css'
 import {
   IconDashboard, IconCalculator, IconCoin, IconUsers,
   IconReports, IconSettings, IconSearch, IconBell,
