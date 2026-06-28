@@ -622,6 +622,7 @@
   margin-bottom: 12px;
   /* Prevent table from collapsing card radius */
   position: relative;
+  display: block;
 }
 
 .ad-table-header {
@@ -1127,7 +1128,7 @@
 /* ── Room grid ── */
 .room-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);  /* ← 6 se 4 karo */
   gap: 6px;
 }
 
@@ -1913,5 +1914,31 @@
     .ad-content {
       padding-bottom: max(14px, env(safe-area-inset-bottom));
     }
+  }
+}
+
+/* ── GLOBAL TABLE OVERFLOW FIX ── */
+.ad-card {
+  overflow: visible;
+}
+
+.ad-table-wrap {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .room-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .room-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .ad-table {
+    min-width: 420px;
   }
 }
